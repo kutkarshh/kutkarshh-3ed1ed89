@@ -1,73 +1,110 @@
-# Welcome to your Lovable project
+# Utkarsh Kumar - Portfolio Website
 
-## Project info
+A modern, animated portfolio website built with React, TypeScript, and TailwindCSS.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Features
 
-## How can I edit this code?
+- **Stunning Dark Theme** - Royal blue and neon purple gradients with glassmorphism
+- **Smooth Animations** - Powered by Framer Motion
+- **Fully Responsive** - Works on all devices
+- **SEO Optimized** - Meta tags, Open Graph, and structured data
+- **Easy to Customize** - All data in separate files
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- React 18 + Vite
+- TypeScript
+- TailwindCSS
+- Framer Motion
+- shadcn/ui components
+- Lucide Icons
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 📁 Project Structure
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+├── components/
+│   ├── layout/
+│   │   ├── Navbar.tsx
+│   │   └── Footer.tsx
+│   ├── sections/
+│   │   ├── Hero.tsx
+│   │   ├── About.tsx
+│   │   ├── Skills.tsx
+│   │   ├── Experience.tsx
+│   │   ├── Projects.tsx
+│   │   ├── Achievements.tsx
+│   │   ├── Education.tsx
+│   │   └── Contact.tsx
+│   └── ui/
+├── data/
+│   ├── profile.ts       # Personal info
+│   ├── skills.ts        # Skills data
+│   ├── experience.ts    # Work experience
+│   ├── projects.ts      # Projects
+│   ├── achievements.ts  # Achievements
+│   └── education.ts     # Education & certs
+├── pages/
+│   └── Index.tsx
+└── index.css            # Design system
 ```
 
-**Edit a file directly in GitHub**
+## 🎨 Customization
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Update Personal Information
 
-**Use GitHub Codespaces**
+Edit the files in `src/data/` folder:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. **profile.ts** - Name, role, bio, contact info
+2. **skills.ts** - Technical skills by category
+3. **experience.ts** - Work history
+4. **projects.ts** - Featured projects
+5. **achievements.ts** - Awards and achievements
+6. **education.ts** - Education and certifications
 
-## What technologies are used for this project?
+### Change Colors
 
-This project is built with:
+Edit `src/index.css` to modify:
+- Primary color (royal blue)
+- Accent color (neon purple)
+- Background colors
+- Gradients
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🚀 Deployment to GitHub Pages
 
-## How can I deploy this project?
+1. Push code to GitHub repository
+2. Go to Settings > Pages
+3. Set Source to "GitHub Actions"
+4. The workflow will automatically deploy on push to `main`
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Your site will be available at: `https://yourusername.github.io/repository-name`
 
-## Can I connect a custom domain to my Lovable project?
+## 📧 Contact Form Setup (EmailJS)
 
-Yes, you can!
+1. Create account at [EmailJS](https://emailjs.com)
+2. Create email service and template
+3. Update `Contact.tsx` with your EmailJS credentials
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🏃 Local Development
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 📝 License
+
+MIT License - Feel free to use this template for your own portfolio!
+
+---
+
+Built with ❤️ by Utkarsh Kumar

@@ -8,17 +8,23 @@ import Projects from "@/components/sections/Projects";
 import Achievements from "@/components/sections/Achievements";
 import Education from "@/components/sections/Education";
 import Contact from "@/components/sections/Contact";
+import DeveloperConsole from "@/components/sections/DeveloperConsole";
+import DebugGame from "@/components/sections/DebugGame";
+import EngineeringPhilosophy from "@/components/sections/EngineeringPhilosophy";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background transition-colors duration-300">
       <Navbar />
       <main>
         <Hero />
         <About />
+        <DeveloperConsole />
         <Skills />
         <Experience />
         <Projects />
+        <EngineeringPhilosophy />
+        <DebugGame />
         <Achievements />
         <Education />
         <Contact />

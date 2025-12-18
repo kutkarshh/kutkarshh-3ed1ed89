@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon, Code2, Briefcase } from "lucide-react";
 import { profile } from "@/data/profile";
+import { useApp } from "@/contexts/AppContext";
+import { Switch } from "@/components/ui/switch";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -17,12 +19,12 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const { toggleMode, toggleTheme, isEngineerMode, isDarkTheme } = useApp();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Update active section based on scroll position
       const sections = navItems.map((item) => item.href.replace("#", ""));
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
@@ -90,17 +92,64 @@ const Navbar = () => {
               ))}
             </div>
 
+            {/* Toggles */}
+            <div className="hidden lg:flex items-center gap-4">
+              {/* Mode Toggle */}
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full glass">
+                <Briefcase className={`h-4 w-4 transition-colors ${!isEngineerMode ? 'text-primary' : 'text-muted-foreground'}`} />
+                <Switch
+                  checked={isEngineerMode}
+                  onCheckedChange={toggleMode}
+                  className="data-[state=checked]:bg-accent"
+                />
+                <Code2 className={`h-4 w-4 transition-colors ${isEngineerMode ? 'text-accent' : 'text-muted-foreground'}`} />
+              </div>
+
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg glass hover:bg-primary/10 transition-colors"
+              >
+                <motion.div
+                  key={isDarkTheme ? 'dark' : 'light'}
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {isDarkTheme ? (
+                    <Sun className="h-5 w-5 text-yellow-500" />
+                  ) : (
+                    <Moon className="h-5 w-5 text-primary" />
+                  )}
+                </motion.div>
+              </button>
+            </div>
+
             {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
+            <div className="lg:hidden flex items-center gap-2">
+              {/* Mobile Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
+              >
+                {isDarkTheme ? (
+                  <Sun className="h-5 w-5 text-yellow-500" />
+                ) : (
+                  <Moon className="h-5 w-5 text-primary" />
+                )}
+              </button>
+
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 text-foreground hover:text-primary transition-colors"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </motion.nav>
@@ -116,6 +165,20 @@ const Navbar = () => {
             className="fixed inset-x-0 top-16 z-40 lg:hidden"
           >
             <div className="glass mx-6 rounded-2xl p-4 shadow-xl">
+              {/* Mobile Mode Toggle */}
+              <div className="flex items-center justify-between px-4 py-3 mb-2 rounded-lg bg-muted/30">
+                <span className="text-sm font-medium text-muted-foreground">Mode:</span>
+                <div className="flex items-center gap-2">
+                  <Briefcase className={`h-4 w-4 ${!isEngineerMode ? 'text-primary' : 'text-muted-foreground'}`} />
+                  <Switch
+                    checked={isEngineerMode}
+                    onCheckedChange={toggleMode}
+                    className="data-[state=checked]:bg-accent"
+                  />
+                  <Code2 className={`h-4 w-4 ${isEngineerMode ? 'text-accent' : 'text-muted-foreground'}`} />
+                </div>
+              </div>
+
               <div className="flex flex-col gap-2">
                 {navItems.map((item) => (
                   <button
